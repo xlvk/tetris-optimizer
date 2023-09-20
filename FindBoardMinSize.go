@@ -1,6 +1,8 @@
 package main
 
-import "math"
+import (
+	"math"
+)
 
 // Calculates minimum possible board size
 func FindBoardMinSize(tetrominoesList []Tetrominoes) int {

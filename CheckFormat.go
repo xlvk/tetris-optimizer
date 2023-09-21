@@ -1,30 +1,23 @@
 package main
 
-import (
-	"fmt"
-	"os"
-)
+import "log"
 
 // Checks file format
 func CheckFormat(transformedContent [][]string) {
-	index := 0
-	for i := 0; i < len(transformedContent); i++ {
-		for k := 0; k < len(transformedContent[i]); k++ {
-			if transformedContent[i][k] == "#" {
-				index++
-			} else if transformedContent[i][k] == "." {
-
-			} else if IsValid(transformedContent[i][k]) {
-				fmt.Println("Error. Bad Formatting.", transformedContent[i][k])
-				os.Exit(1)
+	var validhashcount int
+	for _, tetromino := range transformedContent {
+		for _, row := range tetromino {
+			if len(row) != 4 {
+				log.Fatal("ERROR")
 			}
-			if len(transformedContent[i]) == 1 && index != 4 {
-				fmt.Println("Error. Bad Formatting || figure doesn't consist of 4 cubes.")
-				os.Exit(1)
-			} else if len(transformedContent[i]) == 1 && index == 4 { 
-					index = 0
+			for _, ch := range row {
+				if ch == '#' {
+					validhashcount++
+				}
 			}
 		}
 	}
-
+	if validhashcount != 4 * len(transformedContent) {
+		log.Fatal("ERROR")
+	}
 }

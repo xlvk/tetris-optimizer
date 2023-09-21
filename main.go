@@ -4,10 +4,8 @@ import (
 	"fmt"
 	"os"
 	// "math"
-	// "io/ioutil"
+	"io/ioutil"
 	"strings"
-	"log"
-	"bufio"
 )
 
 func main() {
@@ -16,44 +14,18 @@ func main() {
 		fmt.Println("ERROR.")
 		return
 	} else {
-		// content, err := ioutil.ReadFile("exp/" + os.Args[1])
-		// if err != nil {
-		// 	fmt.Println("Error reading file:", err)
-		// 	os.Exit(1)
-		// }
-		readFile, err := os.Open("exp/" + os.Args[1])
-		defer readFile.Close()
+		content, err := ioutil.ReadFile("exp/" + os.Args[1])
 		if err != nil {
-			log.Fatalf("failed to open file: %s", err)
+			fmt.Println("Error reading file:", err)
+			os.Exit(1)
 		}
-
-		fileScanner := bufio.NewScanner(readFile)
-		fileScanner.Split(bufio.ScanLines)
-		content := ""
-		for fileScanner.Scan() {
-		// ha, e := strconv.Atoi(fileScanner.Text())
-		if fileScanner.Text() == "" {
-			content+="\n"
-		} else {
-			content+= fileScanner.Text() 
-			content+="\n"
-		}
-
-	}
 
 		// Process input content
 		lines := strings.Split(string(content), "\n")
-		// fmt.Println(lines)
 		var transformedContent [][]string
-		for u, line := range lines {
-			if u != len(line)-1 {
-				transformedContent = append(transformedContent, strings.Split(line, ""))
-			}
-
+		for _, line := range lines {
+			transformedContent = append(transformedContent, strings.Split(line, ""))
 		}
-
-		// // Check the format of the input
-		// CheckCheck(transformedContent)
 
 		// Check the format of the input
 		CheckFormat(transformedContent)

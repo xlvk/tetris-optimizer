@@ -1,3 +1,10 @@
+`use "Check.sh" to quick-run all the files in the same time`
+
+##### To run [Check.sh]
+#### +change the 4th line based on the path or ur file.
+#### +use "chmod +x *" to run it.
+#### +Enter "bash [Check.sh]" or "sh [Check.sh]" to run it.
+
 #### Functional
 
 ###### Has the requirement for the allowed packages been respected? (Reminder for this project: only [standard packages](https://golang.org/pkg/))
@@ -76,8 +83,4 @@
 
 ###### +Does the code obey the [good practices](../../good-practices/README.md)?
 
-#### Social
-
-###### +Did you learn anything from this project?
-
-###### +Would you recommend/nominate this program as an example for the rest of the school?
+`The Auther: Me.`

@@ -3,9 +3,11 @@ package main
 import (
 	"fmt"
 	"os"
+
 	// "math"
 	"io/ioutil"
 	"strings"
+	// "tetrisOptimizer"
 )
 
 func main() {
@@ -14,7 +16,13 @@ func main() {
 		fmt.Println("ERROR.")
 		return
 	} else {
-		content, err := ioutil.ReadFile("exp/" + os.Args[1])
+		file := ""
+		if !(strings.Contains(os.Args[1], "TestFile/")) {
+			file = strings.TrimPrefix(os.Args[1], "TestFile/")
+		} else {
+			file = os.Args[1]
+		}
+		content, err := ioutil.ReadFile(file)
 		if err != nil {
 			fmt.Println("Error reading file:", err)
 			os.Exit(1)
